@@ -1,2 +1,3 @@
-# green-commerce
-personal project to develop restful skills, using Next.js, Typescript and MongoDB
+Green-Commerce
+
+Personal project to develop Restful API, using MongoDB, Mongoose, Express, Axios, Nodemon
