@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import useWindowSize from "@global-hooks/useWindowSize";
 import {
   Checkbox,
   Stack,
@@ -7,58 +8,98 @@ import {
   RangeSliderTrack,
   RangeSliderFilledTrack,
   RangeSliderThumb,
+  Select,
 } from "@chakra-ui/react";
 
 export default function asideFilter({
   onCategoriesChange,
+  onCategoriesChangeSelect,
   onEnvironmentChange,
   onPriceChange,
   prices,
 }) {
+  const { width } = useWindowSize();
   return (
     <AsideContainer>
       <Container>
-        <CategoriesContainer>
-          <Title>Categories</Title>
-          <Categories>
-            <li onClick={(e) => onCategoriesChange(e.target)}>All</li>
-            <li onClick={(e) => onCategoriesChange(e.target)}>Seeds</li>
-            <li onClick={(e) => onCategoriesChange(e.target)}>Plants</li>
-            <li onClick={(e) => onCategoriesChange(e.target)}>Flowers</li>
-            <li onClick={(e) => onCategoriesChange(e.target)}>Tools</li>
-            <li onClick={(e) => onCategoriesChange(e.target)}>Fertilizers</li>
-          </Categories>
-        </CategoriesContainer>
+        {width > 768 ? (
+          <>
+            <CategoriesContainer>
+              <Title>Categories</Title>
+              <Categories>
+                <li onClick={(e) => onCategoriesChange(e.target)}>All</li>
+                <li onClick={(e) => onCategoriesChange(e.target)}>Seeds</li>
+                <li onClick={(e) => onCategoriesChange(e.target)}>Plants</li>
+                <li onClick={(e) => onCategoriesChange(e.target)}>Flowers</li>
+                <li onClick={(e) => onCategoriesChange(e.target)}>Tools</li>
+                <li onClick={(e) => onCategoriesChange(e.target)}>
+                  Fertilizers
+                </li>
+              </Categories>
+            </CategoriesContainer>
 
-        <EnvironmentContainer>
-          <Title>Environment</Title>
-          <StackStyled spacing={[2]} direction={["column"]}>
-            <Checkbox
-              size="md"
-              colorScheme="orange"
-              onChange={(e) => onEnvironmentChange(e.target.value)}
-              value="outdoor"
+            <EnvironmentContainer>
+              <Title>Environment</Title>
+              <StackStyled spacing={[2]} direction={["column"]}>
+                <Checkbox
+                  size="md"
+                  colorScheme="orange"
+                  onChange={(e) => onEnvironmentChange(e.target.value)}
+                  value="outdoor"
+                >
+                  <Option>Outdoor</Option>
+                </Checkbox>
+                <Checkbox
+                  size="md"
+                  colorScheme="orange"
+                  onChange={(e) => onEnvironmentChange(e.target.value)}
+                  value="indoor"
+                >
+                  <Option>Indoor</Option>
+                </Checkbox>
+                <Checkbox
+                  size="md"
+                  colorScheme="orange"
+                  onChange={(e) => onEnvironmentChange(e.target.value)}
+                  value="lightless"
+                >
+                  <Option>Lightless</Option>
+                </Checkbox>
+              </StackStyled>
+            </EnvironmentContainer>
+          </>
+        ) : (
+          <>
+            <SelectCategories
+              placeholder="Categories"
+              onChange={(e) => onCategoriesChangeSelect(e.target.value)}
+              width="40%"
+              // bg="tomato"
+              // borderColor="tomato"
+              color="black"
             >
-              <Option>Outdoor</Option>
-            </Checkbox>
-            <Checkbox
-              size="md"
-              colorScheme="orange"
+              <option value="all">All</option>
+              <option value="seeds">Seeds</option>
+              <option value="plants">Plants</option>
+              <option value="flowers">Flowers</option>
+              <option value="tools">Tools</option>
+              <option value="fertilizers">Fertilizers</option>
+            </SelectCategories>
+
+            <SelectEnvironment
+              placeholder="Environment"
               onChange={(e) => onEnvironmentChange(e.target.value)}
-              value="indoor"
+              width="40%"
+              // bg="tomato"
+              // borderColor="tomato"
+              color="black"
             >
-              <Option>Indoor</Option>
-            </Checkbox>
-            <Checkbox
-              size="md"
-              colorScheme="orange"
-              onChange={(e) => onEnvironmentChange(e.target.value)}
-              value="lightless"
-            >
-              <Option>Lightless</Option>
-            </Checkbox>
-          </StackStyled>
-        </EnvironmentContainer>
+              <option value="outdoor">Outdoor</option>
+              <option value="indoor">Indoor</option>
+              <option value="lightless">Lightless</option>
+            </SelectEnvironment>
+          </>
+        )}
 
         <PriceContainer>
           <Title>Price</Title>
@@ -93,6 +134,10 @@ const AsideContainer = styled.div`
   background-color: #3b6061;
   display: flex;
   justify-content: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const Container = styled.div`
@@ -102,18 +147,35 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-top: 2rem;
+  margin-bottom: 0;
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    justify-content: space-around;
+  }
 `;
 
 const CategoriesContainer = styled.div``;
 
 const EnvironmentContainer = styled.div``;
-const PriceContainer = styled.div``;
+
+const PriceContainer = styled.div`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
 
 const Title = styled.h1`
   font-family: "Open Sans";
   font-weight: 700;
   font-size: 1.5rem;
   color: white;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Categories = styled.p`
@@ -154,3 +216,11 @@ const Prices = styled.div`
 `;
 
 const Price = styled.p``;
+
+const SelectCategories = styled(Select)`
+  background-color: #d76144 !important;
+`;
+
+const SelectEnvironment = styled(Select)`
+  background-color: #d76144 !important;
+`;

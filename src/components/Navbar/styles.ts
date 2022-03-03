@@ -1,4 +1,4 @@
-import { Box, Link } from "@chakra-ui/react";
+import { Box, Link, ModalContent } from "@chakra-ui/react";
 import styled from "styled-components";
 
 import { Cart } from "styled-icons/fluentui-system-filled";
@@ -78,4 +78,71 @@ export const Links = styled(Link)`
 export const CartIcon = styled(Cart)`
   color: #0c4648;
   width: 30px;
+`;
+
+export const MenuHamburguer = styled.img`
+  width: 20px;
+  height: 20px;
+  @media (min-width: ${(props) => props.theme.queries.lg}) {
+    display: none;
+  }
+`;
+
+export const LinksModal = styled.a`
+  color: ${(props) => props.theme.colors.white};
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  font-family: "Raleway";
+  font-weight: 400;
+  margin-top: 2.5rem;
+  width: 100%;
+  height: 52px;
+  max-width: 180px;
+  :first-child {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    height: auto;
+  }
+`;
+
+export const CloseButton = styled.img`
+  width: 18px;
+  width: 18px;
+  position: absolute;
+  right: 1.25rem;
+  top: 3.5rem;
+`;
+
+export const SectionModal = styled.section`
+  position: absolute;
+  padding: 2rem 2rem;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: ${(props) => props.theme.colors.green[700]};
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: scroll;
+  width: 100vw;
+  justify-content: flex-start;
+`;
+
+export const WrapperModalContent = styled.div`
+  .css-v9b9hc {
+    display: flex;
+    justify-content: flex-start;
+  }
+`;
+
+export const CustomModalContent = styled(ModalContent)`
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  max-height: auto;
+  justify-content: flex-start;
+  margin-top: 0 !important;
 `;

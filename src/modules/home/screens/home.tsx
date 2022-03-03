@@ -21,6 +21,7 @@ export default function Home() {
       <Container>
         <AsideFilter
           onCategoriesChange={(e) => setCategories(e.innerHTML.toLowerCase())}
+          onCategoriesChangeSelect={(e) => setCategories(e)}
           onEnvironmentChange={(e) => onEnvironmentChange(e)}
           onPriceChange={(e) => setPrices(e)}
           prices={prices}
@@ -40,4 +41,8 @@ const Container = styled.div`
   min-height: 100vh;
   height: auto;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
