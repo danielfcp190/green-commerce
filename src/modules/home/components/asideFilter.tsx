@@ -173,6 +173,9 @@ const Title = styled.h1`
   font-size: 1.5rem;
   color: white;
 
+  @media (max-width: 1024px) {
+    font-size: 1.2rem;
+  }
   @media (max-width: 768px) {
     display: none;
   }

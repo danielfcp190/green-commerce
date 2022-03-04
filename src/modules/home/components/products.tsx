@@ -20,7 +20,18 @@ export default function Products(props) {
         <Stock>Stock: {props.stock}</Stock>
       </PriceAndStockWrapper>
       <AddAndQuantityWrapper>
-        <AddButton onClick={() => props.setCart([...props.cart, props])}>
+        <AddButton
+          onClick={() =>
+            props.setCart([
+              ...props.cart,
+              {
+                ...props,
+                quantity: props.quantity.current,
+                key: Math.random(),
+              },
+            ])
+          }
+        >
           ADD TO CART
         </AddButton>
 
@@ -28,7 +39,7 @@ export default function Products(props) {
           type="text"
           name="quantity"
           defaultValue="1"
-          onChange={(e) => props.onQuantityChange(e)}
+          onChange={(e) => props.onQuantityChange(e.target.value)}
         />
       </AddAndQuantityWrapper>
       <span style={{ display: "none" }}>{props.environment}</span>
@@ -37,10 +48,11 @@ export default function Products(props) {
 }
 
 const Product = styled.div`
-  width: 90%;
-  height: 35vh;
+  width: auto;
+  height: auto;
+  min-height: 35vh;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0 1rem 1rem 0;
   border: 2px solid #0c4648;
   background-color: #dfceb9;
   justify-self: center;
@@ -54,20 +66,21 @@ const Product = styled.div`
 
 const ImageWrapper = styled.div`
   position: relative;
-  width: 90%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
+  min-height: 11.5vh;
   border: 2px solid #0c4648;
 `;
 
 const Name = styled.h1`
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 40px;
   text-transform: capitalize;
 `;
 
 const Description = styled.p`
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 20px;
 `;
@@ -76,7 +89,7 @@ const PriceAndStockWrapper = styled.div`
   width: 90%;
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 30px;
   margin: 0.5rem;
@@ -93,7 +106,7 @@ const AddAndQuantityWrapper = styled.div`
 
 const AddButton = styled.button`
   width: 80%;
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 30px;
   border: 2px solid #0c4648;
@@ -110,7 +123,7 @@ const QuantityInput = styled.input`
   border-radius: 0.5rem;
   text-align: center;
   margin-left: 0.1rem;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 30px;
 `;

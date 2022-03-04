@@ -1,4 +1,5 @@
-import { Box, Modal, useDisclosure } from "@chakra-ui/react";
+import { useContext } from "react";
+import { Modal, useDisclosure } from "@chakra-ui/react";
 
 import {
   Nav,
@@ -13,15 +14,15 @@ import {
   CloseButton,
   LinksModal,
   CustomModalContent,
+  CartQuantity,
+  CartCircle,
 } from "./styles";
 
-import MenuDropdown from "./MenuDropdown/MenuDropdown";
-import { Link as LinkUI } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import { CartContext } from "@global-contexts/CartContext";
 
 export default function Navbar() {
-  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { cart, setCart } = useContext(CartContext);
   return (
     <Nav>
       <LogoTitle href="/">
@@ -47,8 +48,13 @@ export default function Navbar() {
             Fertilizers
           </Links>
           <Links href="/cart" passHref>
-            <CartIcon />
             Cart
+            <CartIcon />
+            {cart.length !== 0 && (
+              <CartCircle>
+                <CartQuantity>{cart.length}</CartQuantity>
+              </CartCircle>
+            )}
           </Links>
         </ContainerLinks>
       </WrapperLinks>
@@ -60,6 +66,12 @@ export default function Navbar() {
             <SectionModal>
               <CloseButton src={"/assets/closeButton.svg"} onClick={onClose} />
 
+              <Links href="/" passHref>
+                <LinksModal>Home</LinksModal>
+              </Links>
+              <Links href="/cart" passHref>
+                <LinksModal>Cart</LinksModal>
+              </Links>
               <Links href="/seeds" passHref>
                 <LinksModal>Seeds</LinksModal>
               </Links>

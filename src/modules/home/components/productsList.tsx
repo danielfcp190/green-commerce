@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import Products from "../components/products";
 import { CartContext } from "@global-contexts/CartContext";
+import { PinInputField } from "@chakra-ui/react";
 
 export default function ProductsList({ categories, environment, prices }) {
   interface IProducts {
@@ -33,7 +34,14 @@ export default function ProductsList({ categories, environment, prices }) {
 
   const { cart, setCart } = useContext(CartContext);
 
-  console.log(cart);
+  const inputEl = useRef(null);
+
+  const [input, setInput] = useState(1);
+
+  useEffect(() => {
+    inputEl.current = input;
+  });
+  console.log(inputEl);
 
   const handlerAsideFilter = () => {
     if (categories === "all" && environment.length === 0) {
@@ -47,11 +55,12 @@ export default function ProductsList({ categories, environment, prices }) {
             description={item.description}
             price={item.price}
             stock={item.stock}
-            quantity={item.quantity}
-            onQuantityChange={(e) => {
-              item.quantity = e.target.value;
-              console.log(item);
-            }}
+            quantity={inputEl}
+            onQuantityChange={(e) => setInput(e)}
+            // onQuantityChange={(e) => {
+            //   item.quantity = e.target.value;
+            //   console.log(item);
+            // }}
             environment={item.environment}
             cart={cart}
             setCart={setCart}
@@ -121,7 +130,8 @@ export default function ProductsList({ categories, environment, prices }) {
 
 const Container = styled.div`
   width: 80%;
-  height: 100%;
+  height: auto;
+  padding: 1rem 0 0 1rem;
   background-color: white;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -136,7 +146,7 @@ const Container = styled.div`
   @media (max-width: 425px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 320px) {
+  @media (max-width: 375px) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;

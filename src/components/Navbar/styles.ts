@@ -5,7 +5,7 @@ import { Cart } from "styled-icons/fluentui-system-filled";
 
 export const Nav = styled.nav`
   background-color: #dfceb9;
-  padding: 2rem 1rem;
+  padding: 1.5rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,11 +13,10 @@ export const Nav = styled.nav`
   font-weight: 900;
   color: #0c4648;
   width: 100%;
-  height: 12vh;
-
-  @media (min-width: ${(props) => props.theme.queries.lg}) {
-    padding: 2rem 4rem;
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
   }
+  /* padding: 1.5rem 3rem; */
 `;
 
 export const LogoTitle = styled(Link)`
@@ -27,14 +26,11 @@ export const LogoTitle = styled(Link)`
 `;
 
 export const WrapperLinks = styled.div`
-  display: none;
-  width: 100%;
-  justify-content: space-between;
-  position: relative;
-
-  @media (min-width: ${(props) => props.theme.queries.lg}) {
-    display: flex;
-    flex-direction: column;
+  @media (max-width: 768px) {
+    display: none;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
   }
 `;
 
@@ -56,13 +52,18 @@ export const Links = styled(Link)`
 
   :first-child {
     margin-left: 0;
-    text-decoration: none;
+    /* text-decoration: none; */
   }
   :nth-child(3) {
     width: 6rem;
   }
   :nth-child(5) {
     width: 7rem;
+  }
+  :last-child {
+    width: auto;
+    display: flex;
+    align-items: center;
   }
   :hover {
     border-bottom: 2px solid ${(props) => props.theme.colors.black};
@@ -78,6 +79,23 @@ export const Links = styled(Link)`
 export const CartIcon = styled(Cart)`
   color: #0c4648;
   width: 30px;
+`;
+
+export const CartQuantity = styled.div`
+  position: relative;
+  /* padding: 0.3rem 0.1rem; */
+  z-index: 2;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 0.2rem;
+`;
+export const CartCircle = styled.div`
+  background: #d76144;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -1.5rem;
+  position: relative;
 `;
 
 export const MenuHamburguer = styled.img`
