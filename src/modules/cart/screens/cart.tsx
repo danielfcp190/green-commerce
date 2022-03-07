@@ -144,4 +144,8 @@ const TotalCart = styled.h1`
   line-height: 40px;
   text-align: end;
   margin-right: 5rem;
+  @media (max-width: 768px) {
+    font-size: 22px;
+    line-height: 30px;
+  }
 `;

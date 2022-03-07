@@ -49,8 +49,7 @@ export default function Products(props) {
 
 const Product = styled.div`
   width: auto;
-  height: auto;
-  min-height: 35vh;
+  height: 35vh;
   padding: 1rem;
   margin: 0 1rem 1rem 0;
   border: 2px solid #0c4648;
