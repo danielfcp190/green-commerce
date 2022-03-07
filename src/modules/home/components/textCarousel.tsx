@@ -19,13 +19,13 @@ const TextContainer = styled.div`
   background-color: rgb(202, 179, 138, 0.8);
   z-index: 3;
   font-family: "Open Sans";
-  color: #2b3445;
+  color: ${(props) => props.theme.colors.blue};
   padding: 1rem;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     width: 70vw;
     left: 15vw;
   }
-  @media (max-width: 425px) {
+  @media (max-width: ${(props) => props.theme.queries.sm}) {
     width: 70vw;
     height: auto;
     top: 1vh;
@@ -37,12 +37,12 @@ const Title = styled.h1`
   font-size: 60px;
   font-weight: 700;
   line-height: 70px;
-  @media (max-width: 425px) {
+  @media (max-width: ${(props) => props.theme.queries.sm}) {
     font-size: 45px;
     font-weight: 500;
     line-height: 50px;
   }
-  @media (max-width: 320px) {
+  @media (max-width: ${(props) => props.theme.queries.xs}) {
     font-size: 40px;
     font-weight: 500;
     line-height: 40px;
@@ -54,13 +54,13 @@ const Param = styled.p`
   font-size: 40px;
   font-weight: 400;
   line-height: 50px;
-  @media (max-width: 425px) {
+  @media (max-width: ${(props) => props.theme.queries.sm}) {
     font-size: 30px;
     font-weight: 400;
     line-height: 30px;
     margin: 0.3rem 0;
   }
-  @media (max-width: 425px) {
+  @media (max-width: ${(props) => props.theme.queries.xs}) {
     font-size: 25px;
     font-weight: 400;
     line-height: 25px;

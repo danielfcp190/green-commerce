@@ -4,19 +4,18 @@ import styled from "styled-components";
 import { Cart } from "styled-icons/fluentui-system-filled";
 
 export const Nav = styled.nav`
-  background-color: #dfceb9;
+  background-color: ${(props) => props.theme.colors.straw};
   padding: 1.5rem 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: "Open Sans";
   font-weight: 900;
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
   width: 100%;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     padding: 2rem 1rem;
   }
-  /* padding: 1.5rem 3rem; */
 `;
 
 export const LogoTitle = styled(Link)`
@@ -26,7 +25,7 @@ export const LogoTitle = styled(Link)`
 `;
 
 export const WrapperLinks = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: none;
     width: 100%;
     justify-content: space-between;
@@ -52,7 +51,6 @@ export const Links = styled(Link)`
 
   :first-child {
     margin-left: 0;
-    /* text-decoration: none; */
   }
   :nth-child(3) {
     width: 6rem;
@@ -77,20 +75,19 @@ export const Links = styled(Link)`
 `;
 
 export const CartIcon = styled(Cart)`
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
   width: 30px;
 `;
 
 export const CartQuantity = styled.div`
   position: relative;
-  /* padding: 0.3rem 0.1rem; */
   z-index: 2;
   font-size: 1rem;
   text-align: center;
   padding-top: 0.2rem;
 `;
 export const CartCircle = styled.div`
-  background: #d76144;
+  background: ${(props) => props.theme.colors.orange};
   border-radius: 50%;
   width: 1.5rem;
   height: 1.5rem;
@@ -110,7 +107,7 @@ export const LinksModal = styled.a`
   color: ${(props) => props.theme.colors.white};
   font-size: 2.5rem;
   line-height: 2.5rem;
-  font-family: "Raleway";
+  font-family: "Open Sans";
   font-weight: 400;
   margin-top: 2.5rem;
   width: 100%;

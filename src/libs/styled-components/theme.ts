@@ -1,6 +1,7 @@
 export default {
   queries: {
     xs: "320px",
+    ssm: "375px",
     sm: "440px",
     md: "768px",
     lg: "1024px",
@@ -10,32 +11,10 @@ export default {
   colors: {
     white: `#fff`,
     black: `#000`,
-    gray: {
-      500: `#302E35`,
-      400: `#525252`,
-      200: `#cfcbd1`,
-      100: `#fafafa`,
-    },
-    green: {
-      900: `#294047`,
-      800: `#2B434A`,
-      700: `#3C6E6D`,
-      600: `#0b2b29`,
-      500: `#A7AD00`,
-      400: `#96a000`,
-      300: `#CED41E`,
-    },
-    blue: {
-      600: `#2B434A`,
-      300: `#B6D3D8`,
-    },
-    purple: {
-      700: `#392D44`,
-      600: `#48344C`,
-      300: `#9687A1`,
-    },
-    pink: {
-      600: `#B23274`,
-    },
+    green: `#0c4648`,
+    musgue: `#3b6061`,
+    blue: `#2b3445`,
+    orange: `#d76144`,
+    straw: `#DFCEB9`,
   },
 };

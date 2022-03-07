@@ -52,15 +52,15 @@ const Product = styled.div`
   height: 35vh;
   padding: 1rem;
   margin: 0 1rem 1rem 0;
-  border: 2px solid #0c4648;
-  background-color: #dfceb9;
+  border: 2px solid ${(props) => props.theme.colors.green};
+  background-color: ${(props) => props.theme.colors.straw};
   justify-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   font-family: "Open Sans";
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
 `;
 
 const ImageWrapper = styled.div`
@@ -68,7 +68,7 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 100%;
   min-height: 11.5vh;
-  border: 2px solid #0c4648;
+  border: 2px solid ${(props) => props.theme.colors.green};
 `;
 
 const Name = styled.h1`
@@ -108,17 +108,20 @@ const AddButton = styled.button`
   font-size: 15px;
   font-weight: 700;
   line-height: 30px;
-  border: 2px solid #0c4648;
+  border: 2px solid ${(props) => props.theme.colors.green};
   border-radius: 0.5rem;
   cursor: pointer;
-  background-color: #d76144;
+  background-color: ${(props) => props.theme.colors.orange};
   padding: 0.2rem;
+  &:active {
+    transform: scale(0.9, 0.9);
+  }
 `;
 
 const QuantityInput = styled.input`
   width: 20%;
   height: 100%;
-  border: 2px solid #0c4648;
+  border: 2px solid ${(props) => props.theme.colors.green};
   border-radius: 0.5rem;
   text-align: center;
   margin-left: 0.1rem;

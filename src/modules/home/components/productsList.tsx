@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 import Products from "../components/products";
 import { CartContext } from "@global-contexts/CartContext";
-import { PinInputField } from "@chakra-ui/react";
 
 export default function ProductsList({ categories, environment, prices }) {
   interface IProducts {
@@ -41,7 +40,6 @@ export default function ProductsList({ categories, environment, prices }) {
   useEffect(() => {
     inputEl.current = input;
   });
-  console.log(inputEl);
 
   const handlerAsideFilter = () => {
     if (categories === "all" && environment.length === 0) {
@@ -57,10 +55,6 @@ export default function ProductsList({ categories, environment, prices }) {
             stock={item.stock}
             quantity={inputEl}
             onQuantityChange={(e) => setInput(e)}
-            // onQuantityChange={(e) => {
-            //   item.quantity = e.target.value;
-            //   console.log(item);
-            // }}
             environment={item.environment}
             cart={cart}
             setCart={setCart}
@@ -78,6 +72,8 @@ export default function ProductsList({ categories, environment, prices }) {
             description={item.description}
             price={item.price}
             stock={item.stock}
+            quantity={inputEl}
+            onQuantityChange={(e) => setInput(e)}
             environment={item.environment}
             cart={cart}
             setCart={setCart}
@@ -95,6 +91,8 @@ export default function ProductsList({ categories, environment, prices }) {
             description={item.description}
             price={item.price}
             stock={item.stock}
+            quantity={inputEl}
+            onQuantityChange={(e) => setInput(e)}
             environment={item.environment}
             cart={cart}
             setCart={setCart}
@@ -113,6 +111,8 @@ export default function ProductsList({ categories, environment, prices }) {
             description={item.description}
             price={item.price}
             stock={item.stock}
+            quantity={inputEl}
+            onQuantityChange={(e) => setInput(e)}
             environment={item.environment}
             cart={cart}
             setCart={setCart}
@@ -132,21 +132,21 @@ const Container = styled.div`
   width: 80%;
   height: auto;
   padding: 1rem 0 0 1rem;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.white};
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.queries.lg}) {
     grid-template-columns: repeat(4, 1fr);
     width: 100%;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: 425px) {
+  @media (max-width: ${(props) => props.theme.queries.sm}) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 375px) {
+  @media (max-width: ${(props) => props.theme.queries.ssm}) {
     grid-template-columns: repeat(1, 1fr);
   }
 `;

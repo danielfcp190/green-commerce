@@ -90,7 +90,7 @@ const Slide = styled.div`
   height: 70vh;
   position: relative;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     height: auto;
   }
 `;

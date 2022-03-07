@@ -42,7 +42,7 @@ const Container = styled.div`
   height: auto;
   display: flex;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     flex-direction: column;
   }
 `;

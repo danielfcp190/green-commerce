@@ -52,10 +52,10 @@ export default function Cart() {
 const CartItem = styled.li`
   width: 90%;
   height: auto;
-  border: 2px solid #0c4648;
-  background-color: #dfceb9;
+  border: 2px solid ${(props) => props.theme.colors.green};
+  background-color: ${(props) => props.theme.colors.straw};
   font-family: "Open Sans";
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
   list-style-type: none;
   margin: 1rem auto;
   padding: 1rem;
@@ -63,7 +63,7 @@ const CartItem = styled.li`
   align-items: center;
   justify-content: space-between;
   grid-template-columns: 1fr 3fr 1fr 1fr 1fr 0.5fr;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     grid-template-columns: 1fr 3fr 0.2fr;
     padding: 0.5rem;
   }
@@ -73,14 +73,14 @@ const ImageWrapper = styled.div`
   position: relative;
   width: 3rem;
   height: 3rem;
-  border: 2px solid #0c4648;
-  @media (max-width: 768px) {
+  border: 2px solid ${(props) => props.theme.colors.green};
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     grid-row: 1 / span 4;
   }
 `;
 
 const TextWrapper = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: flex;
   }
 `;
@@ -96,7 +96,7 @@ const Description = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: none;
   }
 `;
@@ -105,7 +105,7 @@ const QuantityWrapper = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: flex;
   }
 `;
@@ -114,7 +114,7 @@ const PriceWrapper = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: flex;
     margin: 0.2rem 0;
   }
@@ -124,13 +124,21 @@ const TotalWrapper = styled.p`
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: flex;
   }
 `;
 
 const Delete = styled.button`
-  @media (max-width: 768px) {
+  border: 1px solid ${(props) => props.theme.colors.green};
+  width: 1.1rem;
+  justify-self: flex-end;
+  font-weight: 700;
+  background-color: ${(props) => props.theme.colors.orange};
+  &:active {
+    transform: scale(0.9, 0.9);
+  }
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     grid-column: 3;
     grid-row: 1 / span 4;
   }
@@ -138,13 +146,13 @@ const Delete = styled.button`
 
 const TotalCart = styled.h1`
   font-family: "Open Sans";
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
   font-size: 22px;
   font-weight: 700;
   line-height: 40px;
   text-align: end;
   margin-right: 5rem;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     font-size: 22px;
     line-height: 30px;
   }

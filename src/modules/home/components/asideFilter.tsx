@@ -131,10 +131,10 @@ export default function asideFilter({
 const AsideContainer = styled.div`
   width: 20%;
   height: 100vh;
-  background-color: #3b6061;
+  background-color: ${(props) => props.theme.colors.musgue};
   display: flex;
   justify-content: center;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     width: 100%;
     height: auto;
   }
@@ -148,7 +148,7 @@ const Container = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 0;
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     width: 100%;
     flex-direction: row;
     margin-top: 1rem;
@@ -162,7 +162,7 @@ const CategoriesContainer = styled.div``;
 const EnvironmentContainer = styled.div``;
 
 const PriceContainer = styled.div`
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: none;
   }
 `;
@@ -171,12 +171,12 @@ const Title = styled.h1`
   font-family: "Open Sans";
   font-weight: 700;
   font-size: 1.5rem;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
 
-  @media (max-width: 1024px) {
+  @media (max-width: ${(props) => props.theme.queries.lg}) {
     font-size: 1.2rem;
   }
-  @media (max-width: 768px) {
+  @media (max-width: ${(props) => props.theme.queries.md}) {
     display: none;
   }
 `;
@@ -186,7 +186,7 @@ const Categories = styled.p`
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.5rem;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
   list-style-type: none;
   margin-left: 1rem;
   margin-top: 0.5rem;
@@ -199,7 +199,7 @@ const Option = styled.p`
   font-family: "Open Sans";
   font-weight: 500;
   font-size: 1rem;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const StackStyled = styled(Stack)`
@@ -215,15 +215,15 @@ const Prices = styled.div`
   font-family: "Open Sans";
   font-weight: 500;
   font-size: 1rem;
-  color: white;
+  color: ${(props) => props.theme.colors.white};
 `;
 
 const Price = styled.p``;
 
 const SelectCategories = styled(Select)`
-  background-color: #d76144 !important;
+  background-color: ${(props) => props.theme.colors.orange} !important;
 `;
 
 const SelectEnvironment = styled(Select)`
-  background-color: #d76144 !important;
+  background-color: ${(props) => props.theme.colors.orange} !important;
 `;

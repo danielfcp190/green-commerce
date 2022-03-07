@@ -57,7 +57,7 @@ const Button = styled(Link)`
   position: relative;
   width: 7vw;
   height: 12vh;
-  background-color: #dfceb9;
+  background-color: ${(props) => props.theme.colors.straw};
   box-shadow: inset 0 0 5px black;
   margin-right: 1rem;
   display: flex;
@@ -65,6 +65,9 @@ const Button = styled(Link)`
   align-items: center;
   flex-direction: column;
   cursor: pointer;
+  &:active {
+    transform: scale(0.9, 0.9);
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -75,7 +78,7 @@ const IconWrapper = styled.div`
 
 const ButtonTitle = styled.h1`
   font-family: "Open Sans";
-  color: #0c4648;
+  color: ${(props) => props.theme.colors.green};
   font-size: 18px;
   font-weight: 500;
   line-height: 30px;
