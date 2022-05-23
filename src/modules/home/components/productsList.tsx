@@ -25,11 +25,9 @@ export default function ProductsList({ categories, environment, prices }) {
   ] = useState(defaultProducts);
 
   useEffect(() => {
-    axios
-      .get<IProducts[]>("http://localhost:5000/productList")
-      .then((response) => {
-        setProductList(response.data);
-      });
+    axios.get<IProducts[]>("/api/product-list").then((response) => {
+      setProductList(response.data);
+    });
 
     // .catch((error) => console.log(error));
   }, []);
