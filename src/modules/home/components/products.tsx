@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+import Image from "@global-components/Image";
 import styled from "styled-components";
 
 export default function Products(props) {
@@ -49,7 +49,8 @@ export default function Products(props) {
 
 const Product = styled.div`
   width: auto;
-  height: 35vh;
+  height: auto;
+  max-height: 35vh;
   padding: 1rem;
   margin: 0 1rem 1rem 0;
   border: 2px solid ${(props) => props.theme.colors.green};
